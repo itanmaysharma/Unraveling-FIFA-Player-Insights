@@ -3,12 +3,13 @@ import pandas as pd
 import base64
 
 
-def set_bg_hack(main_bg):
+#Reference: https://discuss.streamlit.io/t/how-do-i-use-a-background-image-on-streamlit/5067?page=2
+def set_bg(main_bg):
     '''
     adding background image
     '''
     # set bg name
-    main_bg_ext = "png"
+    main_bg_ext = "jpg"
 
     st.markdown(
         f"""
@@ -23,7 +24,7 @@ def set_bg_hack(main_bg):
     )
 
 
-set_bg_hack('fifabg.jpg')
+set_bg('fifabg.jpg')
 
 
 # st.set_page_config(

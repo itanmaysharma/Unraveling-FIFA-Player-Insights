@@ -16,7 +16,8 @@ st.markdown(
 )
 
 
-def set_bg_hack(main_bg):
+#Reference: https://discuss.streamlit.io/t/how-do-i-use-a-background-image-on-streamlit/5067?page=2
+def set_bg(main_bg):
     '''
     adding background image
     '''
@@ -35,5 +36,4 @@ def set_bg_hack(main_bg):
         unsafe_allow_html=True
     )
 
-
-set_bg_hack('bg.png')
+set_bg('bg.png')
