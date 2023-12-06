@@ -6,13 +6,30 @@ st.set_page_config(
     page_icon="👋",
 )
 
+
 st.write("# Welcome to FootForesight! 👋")
 
-# st.sidebar.success("Select a demo above.")
 
 st.markdown(
-    """
-"""
+    '''
+    FootForesight is a Web Application which leverages the results 
+    from the project " From Virtual Pitch to Data: Unraveling FIFA Player Insights".
+    
+    The main objective for the project mentioned was to extract valuable insights from FIFA21 dataset
+    by taking advantage of ML models and answers below questions -
+    1. What are the most significant attributes associated with a player and how their overall 
+    rating is impacted based on these attributes, and can we build a predictive model for 
+    this? 
+    2. What are the attributes affecting a player’s market value and what are the trends in it?
+    3. What are other possible hidden trends in the dataset that can help in improving 
+    gameplay balance leading to enhanced playing experience?
+    
+    FootForesight is a user-friendly interface which lets you give new data and generate desirable outcomes.
+    
+    There are currently three main features which can be accessed from sidebar.
+    
+    Relevant instructions are mentioned on each page.
+'''
 )
 
 
@@ -22,7 +39,7 @@ def set_bg(main_bg):
     adding background image
     '''
     # set bg name
-    main_bg_ext = "png"
+    main_bg_ext = "jpg"
 
     st.markdown(
         f"""
@@ -36,4 +53,4 @@ def set_bg(main_bg):
         unsafe_allow_html=True
     )
 
-set_bg('bg.png')
+set_bg('backgrounds/bg4.jpg')
