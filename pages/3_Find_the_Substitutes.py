@@ -1,3 +1,5 @@
+import random
+
 import streamlit as st
 import pandas as pd
 import base64
@@ -106,12 +108,15 @@ def return_similar_players(dataf, player, num_results):
 
 my_data = clusterinfo
 
+#Reading a players name from text file and showing it in list options
 with open("players.txt", "r") as file:
-    options = file.read().splitlines()
+    players = file.read().splitlines()
+
+random.shuffle(players)
 
 player_name = st.selectbox(
     "Please select your favourite player to find his matches",
-    options
+    players
 )
 
 

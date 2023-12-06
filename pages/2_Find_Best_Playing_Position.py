@@ -64,37 +64,41 @@ st.markdown(
 '''
 )
 
+st.warning(' Please upload data for atleast 10 players', icon="❗")
+
 
 #Download option for user to download template file to match input format
 with open('csv/Best Position Template.csv', 'rb') as f:
     st.download_button('Download Best Position sheet Template', f, file_name='Template.csv')
 
-# File Upload Section
+
 st.header("Upload CSV File")
 uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
 
-# Prediction Section
+
 if uploaded_file is not None:
-    # Read the CSV file into a DataFrame
+
     df_uploaded = pd.read_csv(uploaded_file)
 
-    # Display the uploaded DataFrame
-    st.write("## Uploaded Data:")
-    st.dataframe(df_uploaded, hide_index=True)
+    if len(df_uploaded) < 10:
+        st.warning("The uploaded file does not have at least 10 samples.")
+    else:
+        st.success("File successfully uploaded. Check results now.")
 
-    # Scale and PCA
-    scaleandpca = scale_pca(df_uploaded.iloc[:, -40:])
+        st.write("## Uploaded Data:")
+        st.dataframe(df_uploaded, hide_index=True)
 
-    # Make Prediction
-    predicted_best = predict_best(scaleandpca)
+        scaleandpca = scale_pca(df_uploaded.iloc[:, -40:])
 
-    predicted_best_list = predicted_best.tolist()
+        predicted_best = predict_best(scaleandpca)
 
-    result_df = pd.DataFrame({
-        "Player Name": df_uploaded.iloc[:, 0],
-        "Predicted Best Position": predicted_best_list
-    })
+        predicted_best_list = predicted_best.tolist()
 
-    # Display the prediction
-    st.write("## Predicted Best Position:")
-    st.dataframe(result_df, hide_index=True)
+        result_df = pd.DataFrame({
+            "Player Name": df_uploaded.iloc[:, 0],
+            "Predicted Best Position": predicted_best_list
+        })
+
+
+        st.write("## Predicted Best Position:")
+        st.dataframe(result_df, hide_index=True)
