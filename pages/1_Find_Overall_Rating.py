@@ -23,7 +23,7 @@ def set_bg(main_bg):
          """,
         unsafe_allow_html=True
     )
-set_bg('backgrounds/bg2.jpg')
+set_bg('backgrounds/bg2n.jpg')
 
 #Loading the saved Ridge regression model
 with open("pickles/ridge_model.pkl", "rb") as model_file:
@@ -38,14 +38,13 @@ def predict_ova(dataframe):
 st.write("# Find Overall Ratings🌟")
 st.markdown(
     '''
-    This feature lets you generate overall rating from the information you upload. 
-    The results are being generated from Ridge Regression model trained on FIFA21 dataset
-    with an accuracy of 98%. 
-    
-    Assuming you are not a beginner to FIFA, we have a download option below so that you can download 
-    a template in which you can directly fill out the information in corresponding columns.
-    
-    Once you are done, you can upload the file from the Upload option and check the results.
+    :white[**This feature lets you generate overall rating from the information you upload.
+    The results are being generated from Ridge Regression model trained on FIFA21 dataset.**]
+
+    :white[**Assuming you are not a beginner to FIFA, we have a download option below so that you can download
+    a template in which you can directly fill out the information in corresponding columns.**]
+
+    :white[**Once you are done, you can upload the file from the Upload option and check the results.**]
 '''
 )
 
@@ -56,13 +55,13 @@ with open('csv/OVA_Template.csv', 'rb') as f:
 
 #User file upload input
 #st.subheaderr("Upload")
-uploaded_file = st.file_uploader("Choose CSV file", type="csv")
+uploaded_file = st.file_uploader(":red[Choose CSV file]", type="csv")
 
 #checking upload file and predicting new results from it
 if uploaded_file is not None:
     df_uploaded = pd.read_csv(uploaded_file)
 
-    st.write("## Uploaded Information:")
+    st.write("## Uploaded Information")
     st.dataframe(df_uploaded, hide_index=True)
 
     predicted_ova = predict_ova(df_uploaded)
@@ -76,6 +75,5 @@ if uploaded_file is not None:
 
     result_df['Predicted Overall Rating'] = result_df['Predicted Overall Rating'].astype(int)
 
-    st.write("## Predicted Overall Rating:")
+    st.write("## Predicted Overall Rating")
     st.dataframe(result_df, hide_index=True)
-
